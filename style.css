@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.bg1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.dot1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    animation: float1 15s infinite linear;
+}
+
+.dot2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    bottom: 15%;
+    right: 10%;
+    animation: float2 20s infinite linear;
+}
+
+.dot3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    top: 60%;
+    left: 80%;
+    animation: float3 12s infinite linear;
+}
+
+@keyframes float1 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(100px, -50px) rotate(360deg); }
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-80px, 60px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    animation: slideup 0.8s ease-out;
+}
+
+@keyframes slideup {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: cardpulse 6s infinite;
+}
+
+@keyframes cardpulse {
+    0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); }
+    50% { box-shadow: 0 25px 60px rgba(106, 17, 203, 0.35); }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadein 1s ease-out 0.3s both;
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.iconbox {
+    font-size: 65px;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: heartbeat 2s infinite, bounce 3s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.header h1 {
+    color: #333;
+    font-size: 34px;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textglow 3s infinite;
+}
+
+@keyframes textglow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.smalltext {
+    color: #666;
+    font-size: 16px;
+    animation: fadeblink 4s infinite;
+}
+
+@keyframes fadeblink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.formarea {
+    margin-bottom: 30px;
+}
+
+.inputarea {
+    margin-bottom: 30px;
+    animation: slideinleft 0.6s ease-out both;
+}
+
+.inputarea:nth-child(1) { animation-delay: 0.4s; }
+.inputarea:nth-child(2) { animation-delay: 0.6s; }
+
+@keyframes slideinleft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.labelarea {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 500;
+}
+
+.labelarea i {
+    color: #6a11cb;
+    font-size: 20px;
+    /* Removed the spin animation */
+}
+
+.inputfield {
+    position: relative;
+    transition: all 0.3s;
+}
+
+.inputfield:hover {
+    transform: translateY(-2px);
+}
+
+.inputfield input {
+    width: 100%;
+    padding: 18px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    font-size: 16px;
+    transition: all 0.4s;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.inputfield input:focus {
+    outline: none;
+    border-color: #6a11cb;
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.3);
+    background: white;
+    animation: inputglow 1.5s infinite;
+}
+
+@keyframes inputglow {
+    0%, 100% { box-shadow: 0 8px 25px rgba(106, 17, 203, 0.3); }
+    50% { box-shadow: 0 8px 35px rgba(106, 17, 203, 0.5); }
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.inputfield input:focus + .line {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: all 0.4s;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    animation: btnappear 0.8s ease-out 1s both, btnfloat 4s infinite 2s;
+}
+
+@keyframes btnappear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes btnfloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(106, 17, 203, 0.5);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn i {
+    font-size: 22px;
+    animation: pillspin 4s infinite linear;
+}
+
+@keyframes pillspin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.footer {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: #666;
+    animation: fadein 1s ease-out 1.2s both;
+}
+
+.footer i {
+    color: #6a11cb;
+    margin-right: 10px;
+    animation: heartpulse 1.5s infinite;
+}
+
+@keyframes heartpulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.alertbox {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    display: none;
+    border-left: 6px solid #ff6b6b;
+    animation: alertslide 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), alertshake 0.5s 0.5s;
+    max-width: 380px;
+    z-index: 1000;
+}
+
+@keyframes alertslide {
+    from {
+        transform: translateX(100%) rotate(5deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes alertshake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.alerticon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    animation: iconbounce 0.6s;
+}
+
+@keyframes iconbounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.alertcontent h4 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.alertcontent p {
+    color: #666;
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 30px 25px;
+    }
+    
+    .iconbox {
+        font-size: 50px;
+    }
+    
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    .alertbox {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        max-width: none;
+    }
+    
+    .btn {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        padding: 25px 20px;
+    }
+    
+    .iconbox {
+        font-size: 45px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+}
